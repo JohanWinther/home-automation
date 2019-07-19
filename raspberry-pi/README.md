@@ -31,7 +31,7 @@ and enter the default password `raspberry`.
 Go to the home directory and download the setup script
 ```bash
 cd ~
-wget https://github.com/JohanWinther/home-automation/raspberry-pi/setup.sh
+wget https://raw.githubusercontent.com/JohanWinther/home-automation/master/raspberry-pi/setup.sh
 chmod +x setup.sh
 sudo ./setup.sh
 ```
