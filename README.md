@@ -18,4 +18,5 @@ No data or information will be available or transmitted outside of the LAN (for 
 
 # References
 - https://projects.raspberrypi.org/en/pathways/getting-started-with-raspberry-pi
+- https://www.raspberrypi.org/documentation/configuration/security.md
 - https://dev.to/bogdaaamn/run-your-nodejs-application-on-a-headless-raspberry-pi-4jnn
