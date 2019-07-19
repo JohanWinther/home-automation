@@ -33,7 +33,8 @@ Go to the home directory and download the setup script
 cd ~
 wget https://raw.githubusercontent.com/JohanWinther/home-automation/master/raspberry-pi/setup.sh
 chmod +x setup.sh
-sudo ./setup.sh
+sudo bash setup.sh
+
 ```
 
 The script will open the raspbian configuration program. Here you need to change the:
