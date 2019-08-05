@@ -1,5 +1,5 @@
 # Turn On/Off Sound System When The TV Is Turned On/Off
-Due to a constant low buzzing of my sound system, I want to turn it off when not in use.
+Due to a constant low buzzing of my sound system, I want to turn it off when it's not in use.
 
 Using an Arduino, the USB port of the TV will be monitored and in the event of a voltage change (i.e. TV is turned on/off) a motor will press the power switch on the sound system.
 
