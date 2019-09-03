@@ -17,7 +17,7 @@ const unsigned int wait_in_seconds = 5;
 // WiFi and MQTT settings
 WiFiClient espClient;
 PubSubClient client(espClient);
-#define temperature_topic "home/living-room/temperature"
+#define temperature_topic "home/temperature/1"
 // Network SSID and password are fetched from WIFICredentials.h
 
 void setup() {
