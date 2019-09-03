@@ -4,8 +4,7 @@
   "description": "Save MQTT messages from predefined topic in a SQLite database",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "server.js"
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Johan Winther",
   "license": "MIT",
