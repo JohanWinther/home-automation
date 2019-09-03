@@ -7,8 +7,8 @@
 #include "WIFICredentials.h"
 
 #define LED_BUILTIN 2
-
-OneWire oneWire(D3);
+#define ONEWIRE D3
+OneWire oneWire(ONEWIRE);
 DallasTemperature sensors(&oneWire);
 
 // Seconds between updates
@@ -22,6 +22,7 @@ PubSubClient client(espClient);
 
 void setup() {
   pinMode(LED_BUILTIN, OUTPUT);
+  pinMode(ONEWIRE, INPUT);
   Serial.begin(115200);
   delay(10);
   
@@ -55,6 +56,7 @@ void loop() {
   }
   sensors.requestTemperatures();
   client.publish(temperature_topic, String(sensors.getTempCByIndex(0)).c_str(), true);
+  Serial.println(sensors.getTempCByIndex(0));
   client.loop();
   delay(wait_in_seconds*1000);
 }
