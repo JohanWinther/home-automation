@@ -57,7 +57,7 @@ mkdir mqtt-db
 cd mqtt-db
 wget https://raw.githubusercontent.com/JohanWinther/home-automation/master/raspberry-pi/mqtt-db/index.js
 wget https://raw.githubusercontent.com/JohanWinther/home-automation/master/raspberry-pi/mqtt-db/mqtt-db.service
-wget https://raw.githubusercontent.com/JohanWinther/home-automation/master/raspberry-pi/mqtt-db/publishers.js
+wget https://raw.githubusercontent.com/JohanWinther/home-automation/master/raspberry-pi/mqtt-db/default.publishers.js
 wget https://raw.githubusercontent.com/JohanWinther/home-automation/master/raspberry-pi/mqtt-db/package.json
 npm install
 cp mqtt-db.service /etc/systemd/system
