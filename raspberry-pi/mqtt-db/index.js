@@ -5,7 +5,12 @@ let db_path = publishConfig.db_path;
 let publishers = publishConfig.publishers;
 
 let sqlite = (statement) => {
-    exec(`sqlite3 ${db_path} "${statement}"`, (err, stdout, stderr) => console.log(stdout));
+    exec(`sqlite3 ${db_path} "${statement}"`, (err, stdout, stderr) => {
+        if (err) {
+            console.log(err, stderr);
+            process.exit(1);
+        }
+    });
 };
 
 // Create database file and create table for each sensor
