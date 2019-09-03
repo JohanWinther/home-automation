@@ -36,6 +36,6 @@ mqttClient.on('message', (topic, message) => {
     let epochTime = Date.now();
     let epochTimeSeconds = Math.floor(epochTime / 1000);
     let table = publishers.filter((item) => item.topic === topic)[0].db_table;
-    sqlite(`INSERT INTO ${table} (time, temperature) VALUES (${epochTime},${message})`);
+    sqlite(`INSERT INTO ${table} (time, temperature) VALUES (${epochTimeSeconds},${message})`);
     console.log(new Date(epochTime).toISOString(), topic, table, message.toString());
 });
