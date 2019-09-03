@@ -54,6 +54,7 @@ echo "Installed MQTT broker and enabled the mosquitto service!"
 cd /home/pi/
 mkdir db
 mkdir mqtt-db
+chown pi:pi -R *
 cd mqtt-db
 wget https://raw.githubusercontent.com/JohanWinther/home-automation/master/raspberry-pi/mqtt-db/index.js -O index.js
 wget https://raw.githubusercontent.com/JohanWinther/home-automation/master/raspberry-pi/mqtt-db/mqtt-db.service -O mqtt-db.service
@@ -61,5 +62,6 @@ wget https://raw.githubusercontent.com/JohanWinther/home-automation/master/raspb
 wget https://raw.githubusercontent.com/JohanWinther/home-automation/master/raspberry-pi/mqtt-db/package.json -O package.json
 npm install
 cp mqtt-db.service /etc/systemd/system
+chown pi:pi -R *
 systemctl enable mqtt-db.service
 systemctl start mqtt-db.service
