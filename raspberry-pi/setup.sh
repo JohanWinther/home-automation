@@ -24,3 +24,42 @@ uniq /etc/hosts.allow > /etc/hosts.allow
 # Regurarly update ssh
 echo "apt install openssh-server" > /etc/cron.daily/openssh-update
 
+echo "Finished securing the Pi!"
+
+### Node.js
+echo "Installing Node.js..."
+cd ~
+wget https://nodejs.org/dist/v10.16.0/node-v10.16.0-linux-armv7l.tar.xz
+tar -xf node-v10.16.0-linux-armv7l.tar.xz
+cd node-v10.16.0-linux-armv7l/
+cp -R * /usr/local/
+cd ../
+rm -rf node-v10.16.0-linux-armv7l
+node -v
+npm -v
+echo "Installed Node.js!"
+
+### Database
+echo "Installing SQLite3..."
+apt --yes install sqlite3
+echo "Installed SQLite3!"
+
+### MQTT
+echo "Installing MQTT broker..."
+apt --yes install mosquitto
+systemctl enable mosquitto
+echo "Installed MQTT broker and enabled the mosquitto service!"
+
+### Setup sensor database
+cd /home/pi/
+mkdir db
+mkdir mqtt-db
+cd mqtt-db
+wget https://raw.githubusercontent.com/JohanWinther/home-automation/master/raspberry-pi/mqtt-db/index.js
+wget https://raw.githubusercontent.com/JohanWinther/home-automation/master/raspberry-pi/mqtt-db/mqtt-db.service
+wget https://raw.githubusercontent.com/JohanWinther/home-automation/master/raspberry-pi/mqtt-db/publishers.js
+wget https://raw.githubusercontent.com/JohanWinther/home-automation/master/raspberry-pi/mqtt-db/package.json
+npm install
+cp mqtt-db.service /etc/systemd/system
+systemctl enable mqtt-db.service
+systemctl start mqtt-db.service

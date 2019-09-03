@@ -1,0 +1,15 @@
+{
+  "name": "mqtt-db",
+  "version": "1.0.0",
+  "description": "Save MQTT messages from predefined topic in a SQLite database",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "server.js"
+  },
+  "author": "Johan Winther",
+  "license": "MIT",
+  "dependencies": {
+    "mqtt": "^3.0.0"
+  }
+}

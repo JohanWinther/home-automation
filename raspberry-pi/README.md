@@ -45,6 +45,12 @@ When you're done select "Finish" and the script will install the required softwa
 
 When the script is done the setup of the Raspberry Pi is finished.
 
+What remains now is to copy the file
+```
+cp ~/mqtt-db/default.publishers.js ~/mqtt-db/publishers.js
+```
+and fill in the publishers you want to be saved in the database.
+
 # Functionality
 Here are some of the functionalities of the Raspberry Pi.
 ## Database

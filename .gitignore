@@ -1,2 +1,4 @@
 .vscode
-WIFICredentials.h
+thermometer/WIFICredentials.h
+node_modules
+raspberry-pi/mqtt-db/publishers.js
