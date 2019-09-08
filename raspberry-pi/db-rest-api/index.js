@@ -56,12 +56,16 @@ app.use("/history/:table_id", (req, res, next) => {
     statement += (start | end) ? ` WHERE ` :''
     let startStatement = !isNaN(start) ? `time > ${start}`:''
     let endStatement = !isNaN(end) ? `time < ${end}`:''
-    statement += (start && end) ? `${startStatement} AND ${endStatement}` : `${startStatement}${endStatement}`
-
-    let numberOfRows = (end-start)/5
-    const maximumRows = 10000 // ~ 0.3 seconds
-    let nth = Math.ceil(numberOfRows/maximumRows)
-    statement += ` AND ROWID % ${nth} = 0`
+    if (start && end) {
+        statement += `${startStatement} AND ${endStatement}`
+        
+        let numberOfRows = (end-start)/5
+        const maximumRows = 10000 // ~ 0.3 seconds
+        let nth = Math.ceil(numberOfRows/maximumRows)
+        statement += ` AND ROWID % ${nth} = 0`
+    } else {
+        statement += `${startStatement}${endStatement}`
+    }
     statement += ';'
     
     sqlite(statement, req.params.table_id).then(result => {
