@@ -50,11 +50,14 @@ apt --yes install mosquitto
 systemctl enable mosquitto
 echo "Installed MQTT broker and enabled the mosquitto service!"
 
-### Setup sensor database
+### Create folders for all services
 cd /home/pi/
 mkdir db
 mkdir mqtt-db
+mkdir db-rest-api
 chown pi:pi -R *
+
+### Setup mqtt-db
 cd mqtt-db
 wget https://raw.githubusercontent.com/JohanWinther/home-automation/master/raspberry-pi/mqtt-db/index.js -O index.js
 wget https://raw.githubusercontent.com/JohanWinther/home-automation/master/raspberry-pi/mqtt-db/mqtt-db.service -O mqtt-db.service
@@ -65,3 +68,15 @@ cp mqtt-db.service /etc/systemd/system
 chown pi:pi -R *
 systemctl enable mqtt-db.service
 systemctl start mqtt-db.service
+
+### Setup db-rest-api
+cd /home/pi/db-rest-api
+wget https://raw.githubusercontent.com/JohanWinther/home-automation/master/raspberry-pi/db-rest-api/index.js -O index.js
+wget https://raw.githubusercontent.com/JohanWinther/home-automation/master/raspberry-pi/db-rest-api/db-rest-api.service -O db-rest-api.service
+wget https://raw.githubusercontent.com/JohanWinther/home-automation/master/raspberry-pi/db-rest-api/package.json -O package.json
+wget https://raw.githubusercontent.com/JohanWinther/home-automation/master/raspberry-pi/db-rest-api/package-lock.json -O package-lock.json
+npm ci
+cp db-rest-api.service /etc/systemd/system
+chown pi:pi -R *
+systemctl enable db-rest-api.service
+systemctl start db-rest-api.service

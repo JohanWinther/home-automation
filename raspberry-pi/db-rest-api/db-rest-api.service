@@ -1,0 +1,13 @@
+[Unit]
+Description=db-rest-api
+After=network.target
+
+[Service]
+WorkingDirectory=/home/pi/db-rest-api
+ExecStart=/usr/local/bin/node /home/pi/db-rest-api/index.js
+RestartSec=10
+Restart=on-failure
+User=pi
+
+[Install]
+WantedBy=multi-user.target
