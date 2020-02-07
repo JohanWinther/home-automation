@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="sv">
+
+<head>
+    <meta charset="utf-8">
+    <title>Innertemperatur</title>
+    <meta name="description" content="Historik för innertemperatur">
+    <meta name="author" content="Johan Winther">
+
+    <link rel="stylesheet" href="styles.css">
+    
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+    <script src="https://cdn.plot.ly/plotly-locale-sv-latest.js"></script>
+    <script>Plotly.setPlotConfig({ locale: 'sv' })</script>
+    <script src="paho-mqtt-min.js"></script>
+    <script src="thermometer.js"></script>
+        
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,700&display=swap&subset=latin-ext"
+        rel="stylesheet">
+
+
+</head>
+
+<body>
+    <header class="module-header">
+        <img srcset="thermometer.svg" />
+        <h1>Innertemperatur</h1>
+    </header>
+    
+    <section class="module-section">
+        <h1>Historik</h1>
+        <div class="border">
+            <div id="thermometer-graph"></div>
+        </div>
+    </section>
+
+</body>
+
+</html>

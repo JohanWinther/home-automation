@@ -1,0 +1,13 @@
+[Unit]
+Description=dashboard
+After=network.target
+
+[Service]
+WorkingDirectory=/home/pi/dashboard
+ExecStart=/usr/local/bin/node /home/pi/dashboard/index.js
+RestartSec=10
+Restart=on-failure
+User=pi
+
+[Install]
+WantedBy=multi-user.target

@@ -55,6 +55,7 @@ cd /home/pi/
 mkdir db
 mkdir mqtt-db
 mkdir db-rest-api
+mkdir dashboard
 chown pi:pi -R *
 
 ### Setup mqtt-db
@@ -80,3 +81,25 @@ cp db-rest-api.service /etc/systemd/system
 chown pi:pi -R *
 systemctl enable db-rest-api.service
 systemctl start db-rest-api.service
+
+### Setup dashboard
+cd /home/pi/dashboard
+mkdir src
+wget https://raw.githubusercontent.com/JohanWinther/home-automation/master/raspberry-pi/dashboard/index.js -O index.js
+wget https://raw.githubusercontent.com/JohanWinther/home-automation/master/raspberry-pi/dashboard/dashboard.service -O dashboard.service
+wget https://raw.githubusercontent.com/JohanWinther/home-automation/master/raspberry-pi/dashboard/package.json -O package.json
+wget https://raw.githubusercontent.com/JohanWinther/home-automation/master/raspberry-pi/dashboard/package-lock.json -O package-lock.json
+wget https://raw.githubusercontent.com/JohanWinther/home-automation/master/raspberry-pi/dashboard/src/favicon.ico -O src/favicon.ico
+wget https://raw.githubusercontent.com/JohanWinther/home-automation/master/raspberry-pi/dashboard/src/index.html -O src/index.html
+wget https://raw.githubusercontent.com/JohanWinther/home-automation/master/raspberry-pi/dashboard/src/main.js -O src/main.js
+wget https://raw.githubusercontent.com/JohanWinther/home-automation/master/raspberry-pi/dashboard/src/paho-mqtt-min.js -O src/paho-mqtt-min.js
+wget https://raw.githubusercontent.com/JohanWinther/home-automation/master/raspberry-pi/dashboard/src/pi-hole.svg -O src/pi-hole.svg
+wget https://raw.githubusercontent.com/JohanWinther/home-automation/master/raspberry-pi/dashboard/src/styles.css -O src/styles.css
+wget https://raw.githubusercontent.com/JohanWinther/home-automation/master/raspberry-pi/dashboard/src/thermometer.html -O src/thermometer.html
+wget https://raw.githubusercontent.com/JohanWinther/home-automation/master/raspberry-pi/dashboard/src/thermometer.js -O src/thermometer.js
+wget https://raw.githubusercontent.com/JohanWinther/home-automation/master/raspberry-pi/dashboard/src/thermometer.svg -O src/thermometer.svg
+npm ci
+cp dashboard.service /etc/systemd/system
+chown pi:pi -R *
+systemctl enable dashboard.service
+systemctl start dashboard.service

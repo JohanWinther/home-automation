@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="sv">
+
+<head>
+    <meta charset="utf-8">
+    <title>Hem</title>
+    <meta name="description" content="Snabbkoll för smart hem">
+    <meta name="author" content="Johan Winther">
+
+    <link rel="stylesheet" href="styles.css">
+    <script src="./paho-mqtt-min.js"></script>
+    <script src="main.js"></script>
+
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,700&display=swap&subset=latin-ext"
+        rel="stylesheet">
+
+</head>
+
+
+<body>
+
+    <a href="thermometer.html" title="Innertemperatur">
+        <section class="module-preview border">
+            <img srcset="thermometer.svg" />
+            <span id="thermometer" class="loading"></span><span>°</span>
+        </section>
+    </a>
+    <a href="http://192.168.1.9/admin/" title="Pi-hole">
+        <section class="module-preview border">
+            <img srcset="pi-hole.svg" style="width:100%;" />
+        </section>
+    </a>
+
+</body>
+
+</html>

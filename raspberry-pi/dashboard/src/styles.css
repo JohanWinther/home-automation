@@ -1,0 +1,117 @@
+:root
+{
+    --main-bg-color: #011627;
+    --main-text-color: #d2dee7;
+    --main-accent-color: #219fd5;
+}
+
+*
+{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+a
+{
+    text-decoration: none;
+    color: currentColor;
+}
+
+body
+{
+    font-family: 'Open Sans', sans-serif;
+    background-color: var(--main-bg-color);
+    color: var(--main-text-color);
+    height: 100vh;
+    padding: 5%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-content: flex-start;
+}
+
+.border
+{
+    border: 1px solid var(--main-accent-color);
+}
+
+.border:hover, .border:focus
+{
+    box-shadow: var(--main-accent-color) 0em 0em 1em;
+}
+
+.module-preview
+{
+    font-weight: bold;
+    width: 16em;
+    height: 16em;
+    margin: 1em;
+    padding: 2em;
+    vertical-align: middle;
+    display: flex;
+    justify-content: left;
+    align-items: center;
+}
+
+.module-preview > img
+{
+    width: 50%;
+    height: 50%;
+}
+
+.module-preview > span
+{
+    font-size: 2.8em;
+}
+
+
+.module-header
+{
+    font-size: 1.2em;
+    width: 100%;
+}
+
+.module-header > img
+{
+    width: 3em;
+    float: left;
+}
+
+
+.module-section
+{
+    margin-top: 1em;
+    display: block;
+    clear: both;
+    width: 100%;
+}
+
+.module-section > * {
+    margin-bottom: 0.5em;
+}
+
+.loading {
+  display: inline-block;
+  width: 1.25em;
+  height: 1.25em;
+}
+.loading:after {
+  content: " ";
+  display: block;
+  width: 0.75em;
+  height: 0.75em;
+  margin: 0.125em;
+  border-radius: 50%;
+  border: 0.09375em solid #fff;
+  border-color: #fff transparent #fff transparent;
+  animation: loading 1.2s linear infinite;
+}
+@keyframes loading {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
