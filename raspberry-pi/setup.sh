@@ -45,6 +45,9 @@ echo "Installed SQLite3!"
 ### MQTT
 echo "Installing MQTT broker..."
 apt --yes install mosquitto
+echo "Adding websocket listener on port 9001"
+echo "listener 9001" | sudo tee /etc/mosquitto/conf.d/local.conf
+echo "protocol websockets" | sudo tee -a /etc/mosquitto/conf.d/local.conf
 systemctl enable mosquitto
 echo "Installed MQTT broker and enabled the mosquitto service!"
 
