@@ -18,7 +18,7 @@ publishers.forEach(p => {
     sqlite(`CREATE TABLE IF NOT EXISTS ${p.db_table} (time INTEGER, temperature float)`);
 });
 
-const mqttClient  = mqtt.connect('mqtt://localhost');
+const mqttClient  = mqtt.connect('mqtt://127.0.0.1');
 
 mqttClient.on('connect', () => {
     publishers.forEach(p => {
