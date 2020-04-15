@@ -59,7 +59,7 @@ SSH into the Pi again when it has rebooted with the Wi-Fi IP address this time (
 Go to the home directory and download the setup script
 ```bash
 cd ~
-wget https://raw.githubusercontent.com/JohanWinther/home-automation/master/raspberry-pi/setup.sh
+wget -O setup.sh https://raw.githubusercontent.com/JohanWinther/home-automation/master/raspberry-pi/setup.sh
 chmod +x setup.sh
 sudo bash setup.sh
 
