@@ -2,12 +2,10 @@
 
 # This file should be run as: sudo bash setup.sh
 
-### Raspbian config
-raspi-config
+
 read -p "Press enter to start the setup..."
 ip_address="$(hostname -I | cut -d ' ' -f 1)"
 echo "(Ethernet eth0) IP address detected as: $ip_address"
-
 
 ### Security
 echo "Securing the Pi..."

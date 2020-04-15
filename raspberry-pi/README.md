@@ -41,6 +41,21 @@ ssh pi@192.168.1.X
 ```
 and enter the default password `raspberry`.
 
+Now you need to configure the Pi with the raspbian configuration program
+```bash
+raspi-config
+```
+Here you need to setup:
+- Default password (1)
+- Wi-Fi credentials (2.N2)
+- boot into text console with autologin (3.B2)
+- Timezone (4.I2)
+- Wi-Fi country (4.I4)
+
+When you're done select "Finish" which will reboot the Pi (and kick you out from SSH). 
+
+SSH into the Pi again when it has rebooted with the Wi-Fi IP address this time (and your new password).
+
 Go to the home directory and download the setup script
 ```bash
 cd ~
@@ -49,12 +64,7 @@ chmod +x setup.sh
 sudo bash setup.sh
 
 ```
-
-The script will open the raspbian configuration program. Here you need to change the:
-- default credentials
-- timezone
-
-When you're done select "Finish" and the script will install the required software packages, setup services and start any software. For more detail look at the [setup script](setup.sh).
+The script will install the required software packages, setup services and start any software. For more detail look at the [setup script](setup.sh).
 
 When the script is done the setup of the Raspberry Pi is finished.
 
