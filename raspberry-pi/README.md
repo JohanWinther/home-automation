@@ -61,7 +61,7 @@ Go to the home directory and download the setup script
 cd ~
 wget -O setup.sh https://raw.githubusercontent.com/JohanWinther/home-automation/master/raspberry-pi/setup.sh
 chmod +x setup.sh
-sudo bash setup.sh
+sudo ./setup.sh
 
 ```
 The script will install the required software packages, setup services and start any software. For more detail look at the [setup script](setup.sh).
