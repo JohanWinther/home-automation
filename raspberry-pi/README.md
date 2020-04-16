@@ -71,7 +71,7 @@ chmod 600 ~/.ssh/authorized_keys
 ```
 
 Add your ssh public key to the Pi by running this from the computer you want to have passwordless access from:
-```cmd
+```bat
 type %USERPROFILE%\.ssh\<rsa.pub> | ssh pi@192.168.1.X "cat >> ~/.ssh/authorized_keys"
 ```
 
@@ -90,6 +90,11 @@ Before the mqtt-db service can work you need to copy the file
 cp ~/mqtt-db/default.publishers.js ~/mqtt-db/publishers.js
 ```
 and fill in the publishers you want to be saved in the database.
+
+You can setup a task/job to backup your database (if you have added an SSH key):
+```bat
+scp -i %USERPROFILE%\.ssh\private_key pi@192.168.1.X:/path/to/database.db "%USERPROFILE%\Google Drive\database.db"
+```
 
 What remains now is to let your router use the Pi as a DNS resolver.
 Follow [this guide](https://discourse.pi-hole.net/t/how-do-i-configure-my-devices-to-use-pi-hole-as-their-dns-server/245).
