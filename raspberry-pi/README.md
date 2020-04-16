@@ -15,6 +15,9 @@ The Pi will act as a message broker with [Mosquitto](https://mosquitto.org/), wh
 ## Central Dashboard Web App
 The Pi hosts a web app which will be accessible on the local network to control the home automation system.
 
+## Pi-hole
+The Pi will act as a DNS resolver and block ads with [Pi-hole](https://pi-hole.net).
+
 # Hardware
 - [Raspberry Pi 3 B+](https://www.raspberrypi.org/products/raspberry-pi-3-model-b/)
 - (USB or SD card) flash drive with at least 4 GB of storage
@@ -82,10 +85,11 @@ sudo ./setup.sh
 ```
 The script will install the required software packages, setup services and start any software. For more detail look at the [setup script](setup.sh).
 
-When the script is done the setup of the Raspberry Pi is finished.
-
-What remains now is to copy the file
+Before the mqtt-db service can work you need to copy the file
 ```
 cp ~/mqtt-db/default.publishers.js ~/mqtt-db/publishers.js
 ```
 and fill in the publishers you want to be saved in the database.
+
+What remains now is to let your router use the Pi as a DNS resolver.
+Follow [this guide](https://discourse.pi-hole.net/t/how-do-i-configure-my-devices-to-use-pi-hole-as-their-dns-server/245).

@@ -63,7 +63,7 @@ mkdir dashboard
 chown pi:pi -R *
 
 ### Setup mqtt-db
-cd mqtt-db
+cd /home/pi/mqtt-db
 wget https://raw.githubusercontent.com/JohanWinther/home-automation/master/raspberry-pi/mqtt-db/index.js -O index.js
 wget https://raw.githubusercontent.com/JohanWinther/home-automation/master/raspberry-pi/mqtt-db/mqtt-db.service -O mqtt-db.service
 wget https://raw.githubusercontent.com/JohanWinther/home-automation/master/raspberry-pi/mqtt-db/default.publishers.js -O default.publishers.js
@@ -107,3 +107,9 @@ cp dashboard.service /etc/systemd/system
 chown pi:pi -R *
 systemctl enable dashboard.service
 systemctl start dashboard.service
+
+### Pi-hole
+cd /home/pi
+wget https://install.pi-hole.net -O basic-install.sh
+chmod +x basic-install.sh
+./basic-install.sh
