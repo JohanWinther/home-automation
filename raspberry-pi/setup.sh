@@ -16,8 +16,8 @@ echo "pi ALL=(ALL) PASSWD: ALL" > /etc/sudoers.d/010_pi-nopasswd
 # Only allow ssh from inside LAN
 network_ip=$(echo "$ip_address" | cut -d '.' -f 1-3)    # 192.168.1
 network_ip=$network_ip.                                 # 192.168.1.
-echo "sshd : $network_ip" >> /etc/hosts.allow
-uniq /etc/hosts.allow > /etc/hosts.allow
+echo "sshd : $network_ip" | sudo tee -a /etc/hosts.allow
+uniq /etc/hosts.allow | sudo tee /etc/hosts.allow
 
 # Regurarly update ssh
 echo "apt install openssh-server" > /etc/cron.daily/openssh-update
