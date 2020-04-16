@@ -113,3 +113,10 @@ cd /home/pi
 wget https://install.pi-hole.net -O basic-install.sh
 chmod +x basic-install.sh
 ./basic-install.sh
+
+echo "Enter new password for the Pi-hole web interface:"
+pihole -a -p
+
+
+### Reboot
+reboot
