@@ -4,7 +4,11 @@ function updateTemperature(temp) {
 }
 
 function setupSocket() {
-    const client = new Paho.Client(location.hostname, Number(9001), "clientId");
+    const client = new Paho.Client(
+        location.hostname,
+        Number(9001),
+        ("dashboard" + (new Date()).getTime()) // Generate unique client id
+    );
 
     function connect(tries) {
         if (!tries) tries = 1;
