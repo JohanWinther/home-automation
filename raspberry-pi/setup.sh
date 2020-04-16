@@ -114,6 +114,9 @@ wget https://install.pi-hole.net -O basic-install.sh
 chmod +x basic-install.sh
 ./basic-install.sh
 
+echo "Adding r.pi domain to Pi-hole to /etc/pihole/local.list..."
+echo "$ip_address r.pi" | sudo tee -a /etc/pihole/local.list
+
 echo "Enter new password for the Pi-hole web interface:"
 pihole -a -p
 
