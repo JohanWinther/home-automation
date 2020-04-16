@@ -21,7 +21,8 @@ The Pi hosts a web app which will be accessible on the local network to control 
 - Ethernet network cable
 - USB (phone) charger (max 5 V, min 2 A)
 
-# Setup the Raspberry Pi 
+# Setup the Raspberry Pi
+## Installing Raspbian lite
 First format your flash drive to FAT32. This will erase any data on it. While it formats download [Raspbian Lite](https://downloads.raspberrypi.org/raspbian_lite_latest) and unzip the ISO image.
 
 When the format is done, burn the ISO image inside the Raspbian archive to the flash drive (a guide can be found [here](https://www.raspberrypi.org/documentation/installation/installing-images/README.md)).
@@ -30,6 +31,8 @@ Burning can be done with [balenaEtcher](https://www.balena.io/etcher/) which is 
 After the burn, go to `boot/` and create a file called `ssh` (no extension) to enable SSH access.
 
 Now we can boot up the Raspberry Pi. Insert the flash drive, network cable and finally the USB charger. When the green LED stops blinking the Pi is ready.
+
+## Settings and installation of software
 
 Now we will install everything on the Pi. This is automated with a [setup script](setup.sh).
 
@@ -55,6 +58,19 @@ Here you need to setup:
 When you're done select "Finish" which will reboot the Pi (and kick you out from SSH). 
 
 SSH into the Pi again when it has rebooted with the Wi-Fi IP address this time (and your new password).
+
+Create an authorized_keys file:
+```bash
+mkdir ~/.ssh
+chmod 700 ~/.ssh
+touch ~/.ssh/authorized_keys
+chmod 600 ~/.ssh/authorized_keys
+```
+
+Add your ssh public key to the Pi by running this from the computer you want to have passwordless access from:
+```cmd
+type %USERPROFILE%\.ssh\<rsa.pub> | ssh pi@192.168.1.X "cat >> ~/.ssh/authorized_keys"
+```
 
 Go to the home directory and download the setup script
 ```bash
