@@ -75,6 +75,15 @@ Add your ssh public key to the Pi by running this from the computer you want to 
 type %USERPROFILE%\.ssh\<rsa.pub> | ssh pi@192.168.1.X "cat >> ~/.ssh/authorized_keys"
 ```
 
+Add this SSH config to `~/.ssh/config` on your computers to configure how to connect to the Pi:
+```
+Host raspi
+  HostName 192.168.1.X
+  IdentityFile ~/.ssh/private_key
+  User pi
+
+```
+
 Go to the home directory and download the setup script
 ```bash
 cd ~
@@ -91,9 +100,9 @@ cp ~/mqtt-db/default.publishers.js ~/mqtt-db/publishers.js
 ```
 and fill in the publishers you want to be saved in the database.
 
-You can setup a task/job to backup your database (if you have added an SSH key):
+You can setup a task/job to backup your database (if you have added `~/.ssh/config`):
 ```bat
-scp -i %USERPROFILE%\.ssh\private_key pi@192.168.1.X:/path/to/database.db "%USERPROFILE%\Google Drive\database.db"
+scp raspi:/path/to/database.db "%USERPROFILE%\Google Drive\database.db"
 ```
 
 What remains now is to let your router use the Pi as a DNS resolver.
