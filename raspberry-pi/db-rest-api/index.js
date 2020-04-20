@@ -59,8 +59,17 @@ app.use("/history/:table_id", (req, res, next) => {
         [start, end] = [end, start];
     }
 
+    // Moving average
+    const movingAverageWindowSize = 10;
+    const halfWindowSize = movingAverageWindowSize / 2;
+
     // Build sql query
-    let statement = ["SELECT", "*", "FROM", req.params.table_id]; // SELECT * FROM table_id
+    let statement = [
+        "SELECT",
+        'time,',
+        `AVG(temperature) OVER (ROWS BETWEEN ${halfWindowSize} PRECEDING AND ${halfWindowSize} FOLLOWING)`,
+        "FROM",
+        req.params.table_id]; // SELECT movingAverageTemp, time FROM table_id
 
     if (start || end) {
 
